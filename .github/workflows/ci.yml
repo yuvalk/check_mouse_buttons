@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev xvfb
+
+      - name: Build
+        run: |
+          make
+
+      - name: (Optional) Test Run
+        run: |
+          # Run the compiled program under a virtual X server
+          xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' ./check_mouse_buttons
