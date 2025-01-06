@@ -20,7 +20,6 @@ int main(void)
     unsigned int max_buttons;
     unsigned char map[32];   /* 32 is often enough for typical pointers, 
                                 but you can adjust if needed */
-    int nbuttons;
 
     /* Open connection to the X server */
     display = XOpenDisplay(NULL);
