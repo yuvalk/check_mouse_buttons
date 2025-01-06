@@ -14,7 +14,7 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libx11-dev xvfb
+          sudo apt-get install -y libx11-dev xvfb x11-xserver-utils
 
       - name: Build
         run: |
@@ -22,5 +22,7 @@ jobs:
 
       - name: (Optional) Test Run
         run: |
-          # Run the compiled program under a virtual X server
-          xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' ./check_mouse_buttons
+          # We run test.sh under Xvfb (a headless X server) to allow xmodmap.
+          # The --auto-servernum ensures each job uses a unique server number,
+          # and --server-args sets up a basic screen for Xvfb.
+          xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' bash ./test.sh
