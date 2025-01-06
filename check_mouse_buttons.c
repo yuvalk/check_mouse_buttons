@@ -1,9 +1,9 @@
 /*
  * Compile with:
- *   gcc -o check_mouse_usage check_mouse_usage.c -lX11
+ *   gcc -o check_mouse_buttons check_mouse_buttons.c -lX11
  *
  * Usage:
- *   ./check_mouse_usage
+ *   ./check_mouse_buttons
  * The program returns:
  *   0 if the mouse is set for right-handed usage (first button == 1),
  *   1 if the mouse is set for left-handed usage (first button == 3),
