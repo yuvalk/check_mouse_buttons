@@ -26,3 +26,7 @@ jobs:
           # The --auto-servernum ensures each job uses a unique server number,
           # and --server-args sets up a basic screen for Xvfb.
           xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' bash ./test.sh
+
+      - name: Test Flip Script
+        run: |
+          xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' bash ./test_flip_mouse.sh
